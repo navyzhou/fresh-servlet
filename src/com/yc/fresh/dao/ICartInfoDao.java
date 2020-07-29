@@ -42,4 +42,6 @@ public interface ICartInfoDao {
 	public int delete(String[] cnos);
 	
 	public int delete(String cno);
+	
+	public List<CartInfo> findByCnos(String[] cnos);
 }

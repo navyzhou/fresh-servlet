@@ -54,8 +54,20 @@ public class CartInfoDaoImpl implements ICartInfoDao{
 			sql += "?,";
 			params.add(cno);
 		}
-		sql += sql.substring(0, sql.lastIndexOf(",")) + ")";
+		sql = sql.substring(0, sql.lastIndexOf(",")) + ")";
 		return db.update(sql, params);
 	}
 
+	@Override
+	public List<CartInfo> findByCnos(String[] cnos) {
+		DBHelper db = new DBHelper();
+		String sql = "select cno, c.gno, num, price, pics, gname, unit, weight from cartinfo c, goodsinfo g where c.gno=g.gno and cno in(";
+		List<Object> params = new ArrayList<Object>();
+		for (String cno : cnos) {
+			sql += "?,";
+			params.add(cno);
+		}
+		sql = sql.substring(0, sql.lastIndexOf(",")) + ")";
+		return db.finds(CartInfo.class, sql, params);
+	}
 }

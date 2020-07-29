@@ -22,7 +22,7 @@ public class CartInfoController extends BasicServlet{
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String op = request.getParameter("op");
-		
+
 		if ("info".equals(op)) {
 			info(request, response);
 		} else if ("update".equals(op)) {
@@ -31,7 +31,15 @@ public class CartInfoController extends BasicServlet{
 			add(request, response);
 		} else if ("find".equals(op)) {
 			find(request, response);
+		} else if ("findByCnos".equals(op)) {
+			findByCnos(request, response);
 		}
+	}
+
+	private void findByCnos(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		String cnos = request.getParameter("cnos");
+		ICartInfoBiz cartInfoBiz = new CartInfoBizImpl();
+		this.send(response, 200, "", cartInfoBiz.findByCnos(cnos));
 	}
 
 	private void find(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -41,7 +49,7 @@ public class CartInfoController extends BasicServlet{
 			this.send(response, 500, "", null);
 			return;
 		}
-		
+
 		// 查数据库
 		ICartInfoBiz cartInfoBiz = new CartInfoBizImpl();
 		MemberInfo mf = (MemberInfo) obj;
@@ -80,7 +88,7 @@ public class CartInfoController extends BasicServlet{
 			this.send(response, 500, "", null);
 			return;
 		}
-		
+
 		// 查数据库
 		ICartInfoBiz cartInfoBiz = new CartInfoBizImpl();
 		MemberInfo mf = (MemberInfo) obj;

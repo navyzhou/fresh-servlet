@@ -71,7 +71,7 @@
         </div>
     	<div class="cart_list_td clearfix" id="cart_list">
        		<ul v-for="(item, index) in carts" :id="'g_'+index">
-        		<li class="col01"><input type="checkbox" checked :index="index"></li>
+        		<li class="col01"><input type="checkbox" checked :index="index" :data-cno="item.cno"></li>
             	<li class="col02"><img :src="item.pics"></li>
                 <li class="col03">{{item.gname}}<br><em>{{item.price}}/{{item.unit}}</em></li>
                 <li class="col04">{{item.weight}}</li>
@@ -92,7 +92,7 @@
             	<li class="col01"><input type="checkbox" checked id="all"></li>
             	<li class="col02"><label for="all">全选</label></li>
                 <li class="col03">合计(不含运费)：<span>&yen;</span><em id="totalPrices">{{totalPrice}}</em><br>共计<b id="totalNumbers">{{totalCount}}</b>件商品</li>
-                <li class="col04"><a href="javascript:gotoPay()">去结算</a></li>
+                <li class="col04"><a href="javascript:void(0)" onclick="gotoPay()">去结算</a></li>
             </ul>
         </div>
     </div>
@@ -215,7 +215,21 @@ function bindInfo() {
 }
 
 function gotoPay() {
-	
+	var cnos = [];
+	// 获取选中的商品
+	$("#cart_list .col01 input[type='checkbox']:checked").each(function(index, item) {
+		cnos.push( $(this).data("cno") );
+	});
+
+	$.post("order", {op: "add", cnos: cnos.join(","), totalPrice: $.trim($("#totalPrices").text())}, result => {
+		if (result.code == 200) {
+			localStorage.removeItem("cnos");
+			localStorage.setItem("cnos", cnos.join(","));
+			location.href="front/pay.html";
+		} else {
+			alert("下单失败，请稍后重试...");
+		}
+	})
 }
 </script>
 </body>

@@ -52,7 +52,7 @@ public class BasicServlet extends HttpServlet{
 		out.flush();
 	}
 	
-	protected void send(HttpServletResponse response,int total, Object obj) throws IOException {
+	protected void send(HttpServletResponse response, int total, Object obj) throws IOException {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("total", total);
 		map.put("rows", obj);

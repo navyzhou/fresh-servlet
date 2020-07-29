@@ -2,6 +2,9 @@
 /* CSS Document */
 
 /*支付订单界面样式*/
+* {
+	font-size: 15px;
+}
 
 .common_title{
 	width:1200px;

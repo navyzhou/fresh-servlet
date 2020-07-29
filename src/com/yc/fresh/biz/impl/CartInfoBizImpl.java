@@ -60,4 +60,15 @@ public class CartInfoBizImpl implements ICartInfoBiz {
 		}
 		return cartInfoDao.delete(cnos);
 	}
+
+	@Override
+	public List<CartInfo> findByCnos(String cnos) {
+		if (StringUtil.checkNull(cnos)) {
+			return Collections.emptyList();
+		}
+		
+		ICartInfoDao cartInfoDao = new CartInfoDaoImpl();
+		String[] temp = cnos.split(",");
+		return cartInfoDao.findByCnos(temp);
+	}
 }

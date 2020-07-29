@@ -40,4 +40,6 @@ public interface ICartInfoBiz {
 	 * @return
 	 */
 	public int delete(String cnos);
+	
+	public List<CartInfo> findByCnos(String cnos);
 }
