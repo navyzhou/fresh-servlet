@@ -2,6 +2,7 @@ package com.yc.fresh.dao.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import com.yc.fresh.dao.DBHelper;
@@ -10,12 +11,13 @@ import com.yc.fresh.dao.IOrderInfoDao;
 public class OrderInfoDaoImpl implements IOrderInfoDao{
 
 	@Override
-	public int add(String cnos, double totalPrice) {
+	public int add(String cnos, double totalPrice, String ano) {
 		// 添加一条数据到订单表中 （订单编号、总价
 		String ono = UUID.randomUUID().toString().replace("-", "");
-		String sql1 = "insert into orderinfo values(?, now(), null, null, null, 1, ?, 0)";
+		String sql1 = "insert into orderinfo values(?, now(), ?, null, null, 1, ?, 0)";
 		List<Object> param1 = new ArrayList<Object>();
 		param1.add(ono);
+		param1.add(ano);
 		param1.add(totalPrice);
 		
 		// 添加多条记录到订单详细表 non  gno nums price
@@ -64,5 +66,13 @@ public class OrderInfoDaoImpl implements IOrderInfoDao{
 		
 		DBHelper db = new DBHelper();
 		return db.updates(sqls, params);
+	}
+
+	@Override
+	public List<Map<String, String>> finds(Integer mno) {
+		DBHelper db = new DBHelper();
+		String sql = "select o.ono, date_format(odate, '%Y-%m-%d %H:%i:%s') odate, o.price totalPrice, o.status, i.gno, nums, i.price, gname, pics, weight, unit"
+				+ " from orderinfo o, orderiteminfo i, goodsinfo g, addrinfo a where o.ono=i.ono and i.gno=g.gno and a.ano=o.ano and a.mno=? order by odate desc";
+		return db.gets(sql, mno);
 	}
 }

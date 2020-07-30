@@ -167,28 +167,26 @@
 }
 
 /* 分页样式 */
-.pagenation{
+#pagination{
 	height:32px;
-	text-align:center;
-	margin:30px auto;
+	text-align: center;
+	margin-top:30px;
 }
-.pagenation li{
-	display:inline-block;
-	box-shadow: 0 1px 3px rgba(0,0,0,0.5);
-	margin-right: 10px;
-}
-.pagenation ul li a {
-	float: left;
+
+.pagenation a {
 	padding: 4px 12px;
 	line-height: 20px;
 	background-color:#CCC;
 	border: 1px solid #d3dbde;
 	color: #08c;
+	margin-left: 10px;
+	display:inline-block;
 }
-.pagenation .active{
+.pagenation .current{
 	background-color:gold;
 	color:#43a200;
 }
-.pagenation ul li a:hover{
+.pagenation a:hover{
 	color: red;
+	border-color: #FF0000;
 }

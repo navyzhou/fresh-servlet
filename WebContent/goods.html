@@ -84,126 +84,56 @@
 <div class="breadcrumb" id="breadcrumb">
  	<a href="javascript:void(0)">全部分类</a>
     <span>&gt;</span>
-    <a href="javascript:void(0)">新鲜水果</a>
+    <a href="javascript:void(0)" id="type_name"></a>
     <span>&gt;</span>
     <a href="javascript:void(0)">商品详情</a>
 </div>
-     
+
 <!-- 商品展示区域-->
 <div class="main_wrap clearfix">
 	<!-- 新品推荐 -->
-   <div class="l_wrap fl clearfix">
-   	<div class="new_goods">
-       	<h3>新品推荐</h3>
-       	<ul>
-           	<li>
-               	<a href="#"><img src="images/goods/goods003.jpg"></a>
-                   <h4><a href="#">牛奶草莓</a></h4>
-                   <div class="prize">￥16.80</div>
-               </li>
-           	<li>
-               	<a href="#"><img src="images/goods/goods009.jpg"></a>
+	<div class="l_wrap fl clearfix">
+   		<div class="new_goods">
+       		<h3>新品推荐</h3>
+       		<ul>
+           		<li>
+               		<a href="#"><img src="images/goods/goods003.jpg"></a>
+                   	<h4><a href="#">牛奶草莓</a></h4>
+                   	<div class="prize">￥16.80</div>
+               	</li>
+           		<li>
+               		<a href="#"><img src="images/goods/goods009.jpg"></a>
                     <h4><a href="#">海南帝王蕉</a></h4>
-                   <div class="prize">￥99.00</div>
-               </li>
-           </ul>
+                   	<div class="prize">￥99.00</div>
+               	</li>
+           	</ul>
        </div>
    </div>
-   <!-- 热门类型查询 -->
-    <div class="r_wrap fr clearfix">
-    	<div class="sort_bar">
-        	<a href="javascript:void(0);" id="normal" class="type active">默认</a>
-            <a href="javascript:void(0);" id="price" class="type ">价格</a>
-            <a href="javascript:void(0);" id="manUse" class="type ">人气</a>
-        </div>
-    	<ul class="goods_type_list clearfix show1">
-      		<li>
-                <a href="#"><img src="images/goods/goods003.jpg"></a>
-                <h4><a href="#">牛奶草莓</a></h4>
-                <div class="operate">
-                	<span class="prize">￥16.80</span>
-                    <span class="unit">16.80/500g</span>
-                    <a href="#" class="add_goods" title="加入购物车"></a>
-                </div>
-            </li>
-            <li>
-                <a href="#"><img src="images/goods/goods003.jpg"></a>
-                <h4><a href="#">牛奶草莓</a></h4>
-                <div class="operate">
-                	<span class="prize">￥16.80</span>
-                    <span class="unit">16.80/500g</span>
-                    <a href="#" class="add_goods" title="加入购物车"></a>
-                </div>
-            </li>
-            <li>
-                <a href="#"><img src="images/goods/goods003.jpg"></a>
-                <h4><a href="#">牛奶草莓</a></h4>
-                <div class="operate">
-                	<span class="prize">￥16.80</span>
-                    <span class="unit">16.80/500g</span>
-                    <a href="#" class="add_goods" title="加入购物车"></a>
-                </div>
-            </li>
-              <li>
-                <a href="#"><img src="images/goods/goods003.jpg"></a>
-                <h4><a href="#">牛奶草莓</a></h4>
-                <div class="operate">
-                	<span class="prize">￥16.80</span>
-                    <span class="unit">16.80/500g</span>
-                    <a href="#" class="add_goods" title="加入购物车"></a>
-                </div>
-            </li>
-<li>
-                <a href="#"><img src="images/goods/goods003.jpg"></a>
-                <h4><a href="#">牛奶草莓</a></h4>
-                <div class="operate">
-                	<span class="prize">￥16.80</span>
-                    <span class="unit">16.80/500g</span>
-                    <a href="#" class="add_goods" title="加入购物车"></a>
-                </div>
-            </li>
-            <li>
-                <a href="#"><img src="images/goods/goods003.jpg"></a>
-                <h4><a href="#">牛奶草莓</a></h4>
-                <div class="operate">
-                	<span class="prize">￥16.80</span>
-                    <span class="unit">16.80/500g</span>
-                    <a href="#" class="add_goods" title="加入购物车"></a>
-                </div>
-            </li>
-            <li>
-                <a href="#"><img src="images/goods/goods003.jpg"></a>
-                <h4><a href="#">牛奶草莓</a></h4>
-                <div class="operate">
-                	<span class="prize">￥16.80</span>
-                    <span class="unit">16.80/500g</span>
-                    <a href="#" class="add_goods" title="加入购物车"></a>
-                </div>
-            </li>
-              <li>
-                <a href="#"><img src="images/goods/goods003.jpg"></a>
-                <h4><a href="#">牛奶草莓</a></h4>
-                <div class="operate">
-                	<span class="prize">￥16.80</span>
-                    <span class="unit">16.80/500g</span>
-                    <a href="#" class="add_goods" title="加入购物车"></a>
-                </div>
-            </li>
-        </ul>
-    <!-- 分页栏-->
-	<div class="pagenation">
-		<ul>
-			<li><a href="#">上一页</a></li>
-			<li><a href="#" class="active">1</a></li>
-			<li><a href="#">2</a></li>
-			<li><a href="#">3</a></li>
-			<li><a href="#">4</a></li>
-			<li><a href="#">5</a></li>
-			<li><a href="#">下一页</a></li>
-		</ul>
-	</div>
-</div>
    
+	<div id="app"> 
+		<!-- 热门类型查询 -->
+		<div class="r_wrap fr clearfix">
+	    	<div class="sort_bar">
+	        	<a href="javascript:void(0);" id="normal" class="type active">默认</a>
+	            <a href="javascript:void(0);" id="price" class="type ">价格</a>
+	            <a href="javascript:void(0);" id="manUse" class="type ">人气</a>
+	        </div>
+	    	<ul class="goods_type_list clearfix show1">
+	      		<li v-for="good in goods">
+	                <a :href="'details.html#' + good.gno + '&' + typeName" target="_blank"><img :src="good.pic"></a>
+                   	<h4><a :href="'details.html#' + good.gno + '&' + typeName" target="_blank">{{good.gname}}</a></h4>
+	                <div class="operate">
+	                	<span class="prize">&yen;{{good.price}}</span>
+	                    <span class="unit">{{good.weight}}/{{good.unit}}</span>
+	                    <a href="#javascript:void(0)" class="add_goods" title="加入购物车" @click="addCart(good.gno)"></a>
+	                </div>
+	            </li>
+	        </ul>
+	        
+	        <!-- 分页栏-->
+			<div class="pagenation" id="pagination"></div>  
+		</div>
+	</div>
 </div>
 <!-- 版权所有 -->
 <div class="footer">
@@ -221,56 +151,53 @@
 <script src="js/axios.js" type="text/javascript"></script>
 <script src="js/qs.js" type="text/javascript"></script>
 <script src="js/checklogin.js" type="text/javascript"></script>
+<script src="js/showpage.js" type="text/javascript"></script>
 <script>
-  	//热门查询动态样式
-//给我们热门类型查询做点击事件
-$(".type").on("click",function(){
-	//默认查询方式 
-	var type = "id";
-	//移除原来的active的样式
-	$(".type").removeClass("active");
-	//获取此时点击的对象的文本是什么
-	var check = $(this).html();
-	//判断
-	if(check == "默认"){
-		$("#normal").addClass("active");
-	}
-	if(check == "价格"){
-		$("#price").addClass("active");
-		type = "gprice"
-	}
-	if(check == "人气"){
-		$("#manUse").addClass("active");
-		type = "gsales"
-	}
-	//与后台交互 暂不处理
-	/*
-	$.post("url",{type:type},function(data){
-		
-	});
-	*/
-	//模拟动态页面
-	var str = '';
-	var data = Math.round(Math.random()*22+1);
-	console.log(data);
-	for(var i= 1;i <data;i++){
-		if(i<10){
-			str += ' <li> <a href="#"><img src="images/goods/goods00'+i+'.jpg"></a>';
-		}else{
-			str += ' <li> <a href="#"><img src="images/goods/goods0'+i+'.jpg"></a>';
+var tno;
+var rows = 2;
+var page = 1;
+
+var vm = new Vue({
+	el:"#app",
+	data: {
+		goods: [], // 商品信息
+		totalPage: 0, // 总页数
+		typeName: ""
+	},
+	mounted: function() {
+		axios.all([getGoodsInfo()]).then(axios.spread((fn) => {
+			this.goods = fn.data.data.rows;
+			this.totalPage = Math.ceil(fn.data.data.total / rows);
+			this.typeName = $("#type_name").text();
+			$("#pagination").showPage(this.totalPage);
+		}))
+	},
+	methods: {
+		addCart: function(gno) {
+			
 		}
-               str +=  '<h4><a href="#">牛奶草莓</a></h4>'+
-				'<div class="operate">'+
-				'<span class="prize">￥16.80</span>'+
-			   '<span class="unit">16.80/500g</span>'+
-				'<a href="cart.html" class="add_goods" title="加入购物车"></a>'+
-				'</div></li>';
 	}
-	//写入网页指定的标签中
-	$(".show1").html(str);
-	
 })
 
+function getGoodsInfo() {
+	var hash = decodeURI(location.hash);
+	if (hash == "" || hash.indexOf("&") <= 0) {
+		location.href="index.html";
+		return;
+	}
+	
+	hash = hash.replace("#", "").split("&");
+	tno = hash[0];
+	$("#type_name").text(hash[1]);
+	
+	return axios.post("goods", qs.stringify({op:"findByTnos", tno:tno, page:page, rows:rows}));
+}
+
+function findByPage(page) {
+	axios.post("goods", qs.stringify({op:"findByTno", tno:tno, page:page, rows:rows})).then(result => {
+		vm.$data.goods = result.data.data;
+	})
+}
 
 </script>
 </body>

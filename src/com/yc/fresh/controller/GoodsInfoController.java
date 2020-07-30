@@ -28,7 +28,27 @@ public class GoodsInfoController extends BasicServlet{
 			findIndex(request, response);
 		} else if ("findByGno".equals(op)) {
 			findByGno(request, response);
+		} else if ("findByTnos".equals(op)) {
+			findByTnos(request, response);
+		} else if ("findByTno".equals(op)) {
+			findByTno(request, response);
 		}
+	}
+
+	private void findByTno(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		String tno = request.getParameter("tno");
+		int page = Integer.parseInt(request.getParameter("page"));
+		int rows = Integer.parseInt(request.getParameter("rows"));
+		IGoodsInfoBiz goodsInfoBiz = new GoodsInfoBizImpl();
+		this.send(response, 200, "", goodsInfoBiz.findByTno(tno, page, rows));
+	}
+
+	private void findByTnos(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		String tno = request.getParameter("tno");
+		int page = Integer.parseInt(request.getParameter("page"));
+		int rows = Integer.parseInt(request.getParameter("rows"));
+		IGoodsInfoBiz goodsInfoBiz = new GoodsInfoBizImpl();
+		this.send(response, 200, "", goodsInfoBiz.findByTnos(tno, page, rows));
 	}
 
 	private void findByGno(HttpServletRequest request, HttpServletResponse response) throws IOException {

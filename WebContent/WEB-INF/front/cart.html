@@ -220,16 +220,10 @@ function gotoPay() {
 	$("#cart_list .col01 input[type='checkbox']:checked").each(function(index, item) {
 		cnos.push( $(this).data("cno") );
 	});
-
-	$.post("order", {op: "add", cnos: cnos.join(","), totalPrice: $.trim($("#totalPrices").text())}, result => {
-		if (result.code == 200) {
-			localStorage.removeItem("cnos");
-			localStorage.setItem("cnos", cnos.join(","));
-			location.href="front/pay.html";
-		} else {
-			alert("下单失败，请稍后重试...");
-		}
-	})
+	
+	localStorage.removeItem("cnos");
+	localStorage.setItem("cnos", cnos.join(","));
+	location.href="front/pay.html";
 }
 </script>
 </body>

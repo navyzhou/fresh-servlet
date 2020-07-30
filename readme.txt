@@ -1,0 +1,13 @@
+	<Resource
+		name="fresh"
+		auth="Container"
+		type="javax.sql.DataSource"
+		driverClassName="com.mysql.cj.jdbc.Driver"
+		url="jdbc:mysql://127.0.0.1:3306/fresh?useSSL=false&amp;useUnicode=true&amp;characterEncoding=utf8&amp;serverTimezone=GMT%2B8&amp;useOldAliasMetadataBehavior=true"
+		username="root"
+		password="a"
+		maxTotal="30"
+		maxWaitMillis="8000"
+		maxIdle="10"
+		initialSize="10"
+	/>

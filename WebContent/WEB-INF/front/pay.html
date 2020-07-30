@@ -54,69 +54,69 @@
 		</div>
 	</div>
 </div>
-    
-<!-- 收货地址 -->
-<h3 class="common_title">确认收货地址</h3>
 
-<div class="common_list_con clearfix">
-	<input type="hidden" id="receive_addr" />
-	<dl id="addr_list">
-		<dt>寄送到：</dt>
-		<dd><span>邮寄到 </span>北京市 海淀区 东北旺西路8号中关村软件园 （李思 收） 159****0775 </dd>
-		<dd class="selectedAddr"><span>邮寄到 </span>北京市 海淀区 东北旺西路8号中关村软件园 （李思 收） 159****0775</dd>
-	</dl>
-	<a href="javascript:showAddrDiv()" class="edit_site">编辑收货地址</a>
-</div>
-	
-<div id="addr_div">
-	<img src="images/close.png" title="关闭" onclick="hiddenDiv()" />
-	<form id="myform">
-		<ul>
-			<li>
-				<label for="addr_name">收货人：</label>
-				<input id="addr_name" name="name" type="text" placeholder="请输入收货人姓名" />
-			</li>
-			<li>
-				<label for="addr_tel">联系方式：</label>
-				<input id="addr_tel" name="tel" type="tel" placeholder="请输入收货人联系方式" />
-			</li>
-			<li>
-				<label for="addr_name">收货地址：</label>
-				<select id="province"></select>
-				<select id="city">
-					<option value="0">--请选择城市--</option>
-				</select>
-				<select id="area">
-					<option value="0">--请选择地区--</option>
-				</select>
-			</li>
-			<li>
-				<label for="addr_addr">详细地址：</label>
-				<input id="addr_addr" name="addr" style="width: 480px;" type="text" placeholder="请输入详细地址（街道、门牌等）" />
-			</li>
-			<li class="addr_btn">
-				<a href="javascript:addAddr()">添加收货地址</a>
-			</li>
-		</ul>
-	</form>
-</div>
-    
-<!-- 支付方式 -->	
-<h3 class="common_title">支付方式</h3>	
-<div class="common_list_con clearfix">
-	<div class="pay_style_con clearfix">
-		<input type="radio" name="pay_style">
-		<label class="cash">货到付款</label>
-		<input type="radio" name="pay_style">
-		<label class="weixin">微信支付</label>
-		<input type="radio" name="pay_style" checked>
-		<label class="zhifubao"></label>
-		<input type="radio" name="pay_style">
-		<label class="bank">银行卡支付</label>
-	</div>
-</div>
-	
 <div id="app"> 
+	<!-- 收货地址 -->
+	<h3 class="common_title">确认收货地址</h3>
+	<div class="common_list_con clearfix">
+		<dl id="addr_list">
+			<dt>寄送到：</dt>
+			<dd v-for="addr in addrs" v-if="addr.flag == 1" class="selectedAddr" :data-ano="addr.ano"><span>邮寄到 </span>{{addr.province}} &nbsp;{{addr.city}} &nbsp;{{addr.area}} &nbsp;{{addr.addr}} &nbsp;（{{addr.name}} 收） &nbsp;{{addr.tel}} </dd>
+			<dd v-else :data-ano="addr.ano"><span>邮寄到 </span>{{addr.province}} &nbsp;{{addr.city}} &nbsp;{{addr.area}} &nbsp;{{addr.addr}} &nbsp;（{{addr.name}} 收） &nbsp;{{addr.tel}} </dd>
+			
+			<!--  <dd class="selectedAddr"><span>邮寄到 </span>北京市 海淀区 东北旺西路8号中关村软件园 （李思 收） 159****0775</dd> -->
+		</dl>
+		<a href="javascript:showAddrDiv()" class="edit_site">编辑收货地址</a>
+	</div>
+	
+	<div id="addr_div"> 
+		<img src="images/close.png" title="关闭" onclick="hiddenDiv()" />
+		<form id="myform">
+			<ul>
+				<li>
+					<label for="addr_name">收货人：</label>
+					<input id="addr_name" name="name" type="text" placeholder="请输入收货人姓名" />
+				</li>
+				<li>
+					<label for="addr_tel">联系方式：</label>
+					<input id="addr_tel" name="tel" type="tel" placeholder="请输入收货人联系方式" />
+				</li>
+				<li>
+					<label for="addr_name">收货地址：</label>
+					<select id="province"></select>
+					<select id="city">
+						<option value="0">--请选择城市--</option>
+					</select>
+					<select id="area">
+						<option value="0">--请选择地区--</option>
+					</select>
+				</li>
+				<li>
+					<label for="addr_addr">详细地址：</label>
+					<input id="addr_addr" name="addr" style="width: 480px;" type="text" placeholder="请输入详细地址（街道、门牌等）" />
+				</li>
+				<li class="addr_btn">
+					<a href="javascript:addAddr()">添加收货地址</a>
+				</li>
+			</ul>
+		</form>
+	</div>
+    
+	<!-- 支付方式 -->	
+	<h3 class="common_title">支付方式</h3>	
+	<div class="common_list_con clearfix">
+		<div class="pay_style_con clearfix">
+			<input type="radio" name="pay_style">
+			<label class="cash">货到付款</label>
+			<input type="radio" name="pay_style">
+			<label class="weixin">微信支付</label>
+			<input type="radio" name="pay_style" checked>
+			<label class="zhifubao"></label>
+			<input type="radio" name="pay_style">
+			<label class="bank">银行卡支付</label>
+		</div>
+	</div>
+	
    	<!-- 商品列表 -->
     <h3 class="common_title">商品列表</h3>
 	<div class="common_list_con clearfix" id="order_list">
@@ -148,13 +148,14 @@
 			<div class="total_pay">实付款：<b id="real_price">{{totalPrice + 10}}元</b></div>
 		</div>
 	</div>
-	<div class="order_submit clearfix">
-		<a href="javascript:;" id="order_btn">提交订单</a>
-	</div>	
-</div>  
+</div> 
+<div class="order_submit clearfix">
+	<a href="javascript:void(0)" onclick="goOrder()">提交订单</a>
+</div>	
+	 
 <div class="popup_con">
 	<div class="popup">
-		<p>订单提交成功！</p>
+		<p>订单提交成功，请支付...</p>
 	</div>
 	
 	<div class="mask"></div>
@@ -179,20 +180,23 @@
 <script src="js/checklogin.js" type="text/javascript"></script>
 <script src="js/addr.js"></script>
 <script type="text/javascript">
+var cnos = "";
 let vm = new Vue({
 	el: "#app",
 	data: {
 		orders: [],
 		totalPrice: 0,
-		totalCount: 0
+		totalCount: 0,
+		addrs: []
 	},
 	mounted: function() {
-		let cnos = localStorage.getItem("cnos");
+		cnos = localStorage.getItem("cnos");
 		if (!cnos) {
 			location.href="front/cart.html";
 			return;
 		}
 		localStorage.removeItem("cnos");
+		
 		axios.post("cart", qs.stringify({op:"findByCnos", cnos: cnos})).then(result => {
 			this.orders = result.data.data;
 			this.orders.forEach( (item, index) => {
@@ -200,16 +204,27 @@ let vm = new Vue({
 				this.totalCount += item.num;
 			})
 		})
-	},
+		
+		axios.post("addr", qs.stringify({op:"find"})).then(result => {
+			if (result.data.code == 200) {
+				this.addrs = result.data.data;
+				
+				this.$nextTick(function() {
+					bindInfo();
+				})
+			}
+		})
+	}
 })
 
 
-$(function(){
+function bindInfo(){
 	$("#addr_list>dd").click(function(){
 		$("#addr_list>dd").removeClass("selectedAddr");
 		$(this).addClass("selectedAddr");
 	});
-})
+}
+
 function showAddrDiv() {
 	$("#myform")[0].reset();
 	$("#addr_div").css("display", "block");
@@ -223,16 +238,29 @@ function addAddr() {
 	
 }
 
-$('#order_btn').click(function() {
-	$('.popup_con').fadeIn('fast', function() {
-		setTimeout(function(){
-			$('.popup_con').fadeOut('fast',function(){
-				window.location.href = 'index.html';
-			});	
-		},3000)
-		
-	});
-});
+function goOrder() {
+	// 取收货地址
+	var ano = $("#addr_list>dd[class='selectedAddr']").data("ano");
+	if (ano == "") {
+		return;
+	}
+	var totalPrice = $.trim($("#total_price").text()).replace("元","");
+	
+	$.post("order", {op: "add", ano:ano, cnos: cnos, totalPrice: totalPrice}, result => {
+		if (result.code == 200) {
+			$('.popup_con').fadeIn('fast', function() {
+				setTimeout(function(){
+					$('.popup_con').fadeOut('fast',function(){
+						location.href = 'front/order.html';
+					});	
+				},3000)
+				
+			});
+		} else {
+			alert("下单失败，请稍后重试...");
+		}
+	},"json");
+}
 </script>
 </body>
 </html>

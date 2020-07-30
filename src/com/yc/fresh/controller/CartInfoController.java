@@ -49,7 +49,6 @@ public class CartInfoController extends BasicServlet{
 			this.send(response, 500, "", null);
 			return;
 		}
-
 		// 查数据库
 		ICartInfoBiz cartInfoBiz = new CartInfoBizImpl();
 		MemberInfo mf = (MemberInfo) obj;
